@@ -18,7 +18,7 @@ import os
 ##########################   Block 1    ##########################
 
 def usage():
-  print("\033[1mUsage: Script.py <path_to_directory> <text_file> <exel_file>\033[0m")
+  print("\033[1mUsage: Script.py <text_file> <exel_file>\033[0m")
   print("Important notes:\n* Exel file must already be exist\n* Must specify full path")#•
   return exit(1)
 
@@ -32,9 +32,9 @@ def age(birthdate):
 
 
 # Define all lists and variables
-path = sys.argv[1]
-text_file = sys.argv[2]
-exel_file = sys.argv[3]
+path = os.getcwd()
+text_file = sys.argv[1]
+exel_file = sys.argv[2]
 names = []
 birthdays = []
 ages = []
