@@ -39,6 +39,7 @@ names = []
 birthdays = []
 ages = []
 diff_days = []
+lt_30 = {}
 top_line= ["Name", "Birthday", "Age", "Days"]
 today = date.today().strftime("%d/%m/%Y")
 
@@ -132,21 +133,28 @@ wb.save(f'{path}{exel_file}')
 ##########################   Block 4    ##########################
 
 # Check the name of person with the closest birthday
-days=int(min(diff_days))
+# for i in diff_days:
+#   if i < 30:
+#     lt_30[f"{i}"] = ""
+# days=int(min(diff_days))
 for i in range(2, sheet.max_row+1):
   cell_obj = sheet.cell(row=i, column=4)
-  if cell_obj.value == days:
-    name = sheet.cell(row=i, column=1).value
+  if cell_obj.value == None: break
+  if cell_obj.value < 50:
+    lt_30[cell_obj.value] = sheet.cell(row=i, column=1).value
+lt_30 = dict(sorted(lt_30.items()))
 
-# Output to screen with pop-out window
-if min(diff_days) >= 30:
-  # Only Text Notification
-  # notify2.init('Basic')
-  # notify2.Notification('Birthday', f"Closest birthday to {name} in {days} days").show()
-  # Pop up windows
-  root = tk.Tk()
-  root.withdraw()
-  messagebox.showwarning('Birthday', f"Closest birthday to {name} in {days} days")
+# Build message and output it to screen with pop-out window
+msg = ""
+for key, value in lt_30.items():
+  msg += f"{value} - {key} days\n"
+# Only Text Notification
+# notify2.init('Basic')
+# notify2.Notification('Birthday', f"Closest birthday to {name} in {days} days").show()
+# Pop up windows
+root = tk.Tk()
+root.withdraw()
+messagebox.showwarning('Birthday', f"{msg}")
 
 
 ##########################   Block 5 - Extra    ##########################
