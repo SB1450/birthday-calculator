@@ -33,6 +33,9 @@ def age(birthdate):
 
 # Define all lists and variables
 path = os.getcwd()
+help_call = ["-h", "-H", "--help", "-help"]
+if sys.argv[1] in help_call: usage()
+# if sys.argv[1] == "-h": usage()
 text_file = sys.argv[1]
 exel_file = sys.argv[2]
 names = []
