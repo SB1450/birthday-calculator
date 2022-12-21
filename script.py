@@ -6,8 +6,10 @@ import openpyxl
 import pandas as pd
 import sys
 import os
-import notify2
+import tkinter as tk
+from tkinter import messagebox
 import xlsxwriter
+# import notify2
 # import numpy as np
 # from openpyxl import Workbook
 
@@ -30,9 +32,9 @@ def age(birthdate):
 ## Define all lists and variables
 path = os.getcwd()
 help_call = ["-h", "-H", "--help", "-help"]
+try: text_file = sys.argv[1]
+except IndexError: usage()
 if sys.argv[1] in help_call: usage()
-## if sys.argv[1] == "-h": usage()
-text_file = sys.argv[1]
 exel_file = "DEMO.xlsx"
 names = []
 birthdays = []
@@ -107,7 +109,7 @@ for line in lines:
 workbook = xlsxwriter.Workbook(f"{exel_file}")
 worksheet = workbook.add_worksheet()
 workbook.close()
-os.chmod(f"{path}{exel_file}", 0o777)
+os.chmod(f"{path}{exel_file}", 0o755)
 ## Open the file and make changed
 wb = openpyxl.load_workbook(f'{path}{exel_file}')
 sheet = wb.active
@@ -144,10 +146,11 @@ for i in range(2, sheet.max_row+1):
     name = sheet.cell(row=i, column=1).value
 
 # Output to screen with pop-out window
-if min(diff_days) <= 30:
-  # Text Notification
-  notify2.init('Basic')
-  notify2.Notification('Birthday', f"Closest birthday to {name} in {days} days").show()
+if min(diff_days) >= 30:
+## Pop up windows
+  root = tk.Tk()
+  root.withdraw()
+  messagebox.showwarning('Birthday', f"Closest birthday to {name} in {days} days")
 
 
 ##########################   Block 5 - Extra    ##########################
