@@ -147,7 +147,7 @@ for i in range(2, sheet.max_row+1):
     name = sheet.cell(row=i, column=1).value
 
 # Output to screen with pop-out window
-if min(diff_days) <= notf_before_next_bd:
+if min(diff_days) >= notf_before_next_bd:
 ## Pop up windows
   root = tk.Tk()
   root.withdraw()
