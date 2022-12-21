@@ -30,12 +30,13 @@ def age(birthdate):
 
 
 ## Define all lists and variables
+exel_file = "DEMO.xlsx"
+notf_before_next_bd = 30
 path = os.getcwd()
 help_call = ["-h", "-H", "--help", "-help"]
 try: text_file = sys.argv[1]
 except IndexError: usage()
 if sys.argv[1] in help_call: usage()
-exel_file = "DEMO.xlsx"
 names = []
 birthdays = []
 ages = []
@@ -146,7 +147,7 @@ for i in range(2, sheet.max_row+1):
     name = sheet.cell(row=i, column=1).value
 
 # Output to screen with pop-out window
-if min(diff_days) >= 30:
+if min(diff_days) <= notf_before_next_bd:
 ## Pop up windows
   root = tk.Tk()
   root.withdraw()

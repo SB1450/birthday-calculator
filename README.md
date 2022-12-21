@@ -25,3 +25,5 @@ The script create "Exel file" - file that will contain the results of the script
 * The order of the Exel-file will be according to the names order in the Text-file. At the end of the script I added code block that allow you to sort the output of Exel-file by the column you want.
 
 **Usage: script.py Text-file**
+
+P.S. You can change exel-file name in line 33 and the variable "notf_before_next_bd" in line 34 to decide how ,uch days before the birthday the pop-out window will appear.
