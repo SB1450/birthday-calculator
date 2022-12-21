@@ -2,6 +2,11 @@
 
 ## This calcultor builded with python 3.10
 
+This is a python script that get a text file with names and birthdays as argument and calculate and create exel file with all names and their next birthday and in addition generate pop-out window that shows who has the closest birthday.
+
+Before you run the script you need to install the requirements.txt file, run this command:
+``` pip install -r requirements.txt```
+
 The script.py is a python script that get one argument: 
 1. Text-file - file with names and birthdays seperated by comma
 
