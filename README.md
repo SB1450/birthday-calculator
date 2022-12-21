@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ```
 <sub>if you have problem with modules check [here](https://www.quora.com/I-used-pip-to-install-a-library-but-when-I-import-it-it-says-Module-Not-Found-Why-is-that)</sub>
 
-=======================================================
+============================================================================================================
 
 The script.py is a python script that get one argument:
 Text-file - file with names and birthdays seperated by comma
