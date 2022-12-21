@@ -1,16 +1,13 @@
-#!/bin/python3
-
 ##########################   Block 0    ##########################
 
 from datetime import datetime
 from datetime import date
 import openpyxl
 import pandas as pd
-import tkinter as tk
-from tkinter import messagebox
 import sys
 import os
 import notify2
+import xlsxwriter
 # import numpy as np
 # from openpyxl import Workbook
 
@@ -18,8 +15,7 @@ import notify2
 ##########################   Block 1    ##########################
 
 def usage():
-  print("\033[1mUsage: Script.py <text_file> <exel_file>\033[0m")
-  print("Important notes:\n* Exel file must already be exist\n* Must specify full path")#•
+  print("\033[1mUsage: Script.py <text_file>\033[0m")
   return exit(1)
 
 
@@ -37,7 +33,7 @@ help_call = ["-h", "-H", "--help", "-help"]
 if sys.argv[1] in help_call: usage()
 ## if sys.argv[1] == "-h": usage()
 text_file = sys.argv[1]
-exel_file = sys.argv[2]
+exel_file = "DEMO.xlsx"
 names = []
 birthdays = []
 ages = []
@@ -107,7 +103,12 @@ for line in lines:
 
 ##########################   Block 3    ##########################
 
-os.chmod(f"{path}{exel_file}", 0o644)
+## Create exel file and give it write premission
+workbook = xlsxwriter.Workbook(f"{exel_file}")
+worksheet = workbook.add_worksheet()
+workbook.close()
+os.chmod(f"{path}{exel_file}", 0o777)
+## Open the file and make changed
 wb = openpyxl.load_workbook(f'{path}{exel_file}')
 sheet = wb.active
 
@@ -136,25 +137,17 @@ wb.save(f'{path}{exel_file}')
 ##########################   Block 4    ##########################
 
 ## Check the name of person with the closest birthday
+days=int(min(diff_days))
 for i in range(2, sheet.max_row+1):
   cell_obj = sheet.cell(row=i, column=4)
-  if cell_obj.value == None: break
-  if cell_obj.value < 50:
-    lt_30[cell_obj.value] = sheet.cell(row=i, column=1).value
-lt_30 = dict(sorted(lt_30.items()))
+  if cell_obj.value == days:
+    name = sheet.cell(row=i, column=1).value
 
-## Build message and output it to screen with pop-out window
-msg = ""
-for key, value in lt_30.items():
-  msg += f"{value} - {key} days\n"
-
-## Only Text Notification
-notify2.init('Basic')
-notify2.Notification('Birthday', f"{msg}").show()
-## Pop up windows
-root = tk.Tk()
-root.withdraw()
-messagebox.showwarning('Birthday', f"{msg}")
+# Output to screen with pop-out window
+if min(diff_days) <= 30:
+  # Text Notification
+  notify2.init('Basic')
+  notify2.Notification('Birthday', f"Closest birthday to {name} in {days} days").show()
 
 
 ##########################   Block 5 - Extra    ##########################
