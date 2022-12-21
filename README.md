@@ -11,11 +11,13 @@ sudo apt install python3-tk
 ```           
 <sub>more about Tkinter installation on ubuntu: https://www.pythonguis.com/installation/install-tkinter-linux/#</sub> 
 
+<sub>Tltinker documentation for windows: https://tkdocs.com/tutorial/install.html#installwin</sub>
+
 2. Install the requirements.txt file
 ```
 pip install -r requirements.txt
 ```
-
+if you have problem with modules check [here](https://www.quora.com/I-used-pip-to-install-a-library-but-when-I-import-it-it-says-Module-Not-Found-Why-is-that)
 
 The script.py is a python script that get one argument:
 Text-file - file with names and birthdays seperated by comma
