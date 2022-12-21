@@ -4,7 +4,7 @@
 
 This is a python script that get a text file with names and birthdays as argument and calculate and create exel file with all names and their next birthday and in addition generate pop-out window that shows who has the closest birthday.
 
-****Before you run the script you need to Install Tkinter on Ubuntu Linux AND install the requirements.txt file**
+### ****Before you run the script you need to Install Tkinter on Ubuntu Linux AND install the requirements.txt file**
 1.  Install Tkinter on Ubuntu Linux:
 ```
 sudo apt install python3-tk
@@ -17,7 +17,9 @@ sudo apt install python3-tk
 ```
 pip install -r requirements.txt
 ```
-if you have problem with modules check [here](https://www.quora.com/I-used-pip-to-install-a-library-but-when-I-import-it-it-says-Module-Not-Found-Why-is-that)
+<sub>if you have problem with modules check [here](https://www.quora.com/I-used-pip-to-install-a-library-but-when-I-import-it-it-says-Module-Not-Found-Why-is-that)</sub>
+
+===========================================================================================================
 
 The script.py is a python script that get one argument:
 Text-file - file with names and birthdays seperated by comma
