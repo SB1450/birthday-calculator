@@ -115,25 +115,19 @@ os.chmod(f"{path}{exel_file}", 0o755)
 wb = openpyxl.load_workbook(f'{path}{exel_file}')
 sheet = wb.active
 
-## Add top line of file
+## Add the headline to the exel file
 for index, value in enumerate(top_line):
   sheet.cell(row=1 ,column=index+1 ,value=value)
-
-## Add\Update names in Exel file
-for index, value in enumerate(names):
-  sheet.cell(row=index+2 ,column=1 ,value=value)
-
-## Add\Update birthdays in Exel file
-for index, value in enumerate(birthdays):
-  sheet.cell(row=index+2 ,column=2 ,value=value)
-
-## Add\Update ages in Exel file
-for index, value in enumerate(ages):
-  sheet.cell(row=index+2 ,column=3 ,value=value)
-
-## Add\Update days until Birthdays in Exel file and save all changes
-for index, value in enumerate(diff_days):
-  sheet.cell(row=index+2 ,column=4 ,value=value)
+  
+def edit_exel(ROW, COL, data_list):
+  for index, value in enumerate(data_list):
+    sheet.cell(row=index+ROW ,column=COL ,value=value)
+  
+# Call the function and insert the data into columns
+edit_exel(2, 1, names)
+edit_exel(2, 2, birthdays)
+edit_exel(2, 3, ages)
+edit_exel(2, 4, diff_days)
 wb.save(f'{path}{exel_file}')
 
 
