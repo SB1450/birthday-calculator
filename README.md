@@ -4,7 +4,7 @@
 
 This is a python script that get a text file with names and birthdays as argument and calculate and create exel file with all names and their next birthday and in addition generate pop-out window that shows who has the closest birthday.
 
-### ****Before you run the script you need to Install Tkinter on Ubuntu Linux AND install the requirements.txt file**
+### ****Before you run the script you need to Install Tkinter on Ubuntu Linux (already installed on windows) AND install the requirements.txt file**
 1.  Install Tkinter on Ubuntu Linux:
 ```
 sudo apt install python3-tk
@@ -26,8 +26,12 @@ Text-file - file with names and birthdays seperated by comma
 
 The script create "Exel file" - file that will contain the results of the script, including those columns: Name, Birthday, Age, Days(until next birthday)
 
-* The order of the Exel-file will be according to the names order in the Text-file. At the end of the script I added code block that allow you to sort the output of Exel-file by the column you want.
+* The order of the Exel-file will be according to person with closest birthday to person with farest birthday
 
-**Usage: script.py Text-file**
+**Usage: script.py Text-file <-all> <-days range->**
 
-P.S. You can change exel-file name in line 33 and the variable "notf_before_next_bd" in line 34 to decide how ,uch days before the birthday the pop-out window will appear.
+There is 2 **optional arguments** that can be given to script in adittion to text-file argument:
+1. **-all** - print to screen massage all people in the list
+2. **days-range** (in number)- if "-all" flag is given you can choose the days range of birthdays you want to see for example 100 will show only people in list that have birthday within 100 days or less
+  
+<sub>e.g.: python script.py textfile -all 100</sub>
